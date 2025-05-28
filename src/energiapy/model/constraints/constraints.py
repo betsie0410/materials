@@ -229,6 +229,7 @@ def make_constraint(instance: ConcreteModel, type_cons: Cons, variable_x: Var, l
                 bfactor = 1
 
             b = bmax*bfactor
+            print(bmax, bfactor)
 
             if variable_y is not None:
                 if type_cons == Cons.X_EQ_SUMSCALE_Y:

@@ -427,7 +427,13 @@ class Scenario:
 
             'process_material_modes': process_material_modes,
 
+<<<<<<< Updated upstream
             'material_modes': [element for dictionary in list(i.material_modes for i in self.process_set) for element in dictionary]
+=======
+            'material_modes': [element for dictionary in list(i.material_modes for i in self.process_set) for element in dictionary],
+
+            # 'process_modes': [(j[0], i) for j in [(i.name, i.modes) for i in self.process_set if i.processmode is ProcessMode.MULTI] for i in j[1]]
+>>>>>>> Stashed changes
         }
 
         self.varying_bounds_dict = {

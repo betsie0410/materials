@@ -181,7 +181,7 @@ class Process:
     trl: str = None
     block: str = ''
     citation: str = 'citation needed'
-    lifetime: int = None
+    lifetime: int = 1
     varying: List[VaryingProcess] = None
     p_fail: float = None
     label: str = ''
@@ -205,6 +205,21 @@ class Process:
             conversion_discharge (Dict[Resource, float]): Creates a dictionary with the discharge conversion values (considers storage loss).
             cost_dynamics (CostDynamics): Determines whether the cost scales linearly with the unit capacity, or is a piecewise-linear function.
         """
+        if self.processmode is None:
+            self.processmode = ProcessMode.SINGLE
+
+        if self.ramp is not None:
+            self.modes = self.ramp.modes
+            self.cap_pwl = self.ramp.cap_pwl
+            self.ramp_rates = self.ramp.rates
+            self.ramp_sequence = self.ramp.sequence
+            self.processmode = ProcessMode.MULTI
+
+        else:
+            self.modes = None
+            self.cap_pwl = None
+            self.ramp_rates = None
+            self.ramp_sequence = None
 
         if self.varying is None:  # if nothing is varying, set defaults to CERTAIN_X
             self.varying = []
@@ -244,6 +259,7 @@ class Process:
                 self.materialmode = MaterialMode.MULTI
             else:
                 self.materialmode = MaterialMode.SINGLE
+            self.material_cons  = {mm: {m: v/self.lifetime for m,v in i.items()} for mm, i in self.material_cons.items()}
         else:
             self.material_cons = {}
 
