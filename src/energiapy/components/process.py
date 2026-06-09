@@ -208,18 +208,18 @@ class Process:
         if self.processmode is None:
             self.processmode = ProcessMode.SINGLE
 
-        if self.ramp is not None:
-            self.modes = self.ramp.modes
-            self.cap_pwl = self.ramp.cap_pwl
-            self.ramp_rates = self.ramp.rates
-            self.ramp_sequence = self.ramp.sequence
-            self.processmode = ProcessMode.MULTI
+        # if self.ramp is not None:
+        #     self.modes = self.ramp.modes
+        #     self.cap_pwl = self.ramp.cap_pwl
+        #     self.ramp_rates = self.ramp.rates
+        #     self.ramp_sequence = self.ramp.sequence
+        #     self.processmode = ProcessMode.MULTI
 
-        else:
-            self.modes = None
-            self.cap_pwl = None
-            self.ramp_rates = None
-            self.ramp_sequence = None
+        # else:
+        #     self.modes = None
+        #     self.cap_pwl = None
+        #     self.ramp_rates = None
+        #     self.ramp_sequence = None
 
         if self.varying is None:  # if nothing is varying, set defaults to CERTAIN_X
             self.varying = []

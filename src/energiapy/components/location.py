@@ -103,17 +103,19 @@ class Location:
         self.scale_levels = self.scales.scale_levels
         self.processes_full = self.processes.union({create_storage_process(
             i) for i in self.processes if i.processmode == ProcessMode.STORAGE})
-        self.cap_max = self.get_cap_max()  # dicitionary of maximum production
-        self.cap_min = self.get_cap_min()  # dictionary of minimum production
+        self.prod_max = self.get_prod_max()
+        self.prod_min = self.get_prod_min()
+        # self.cap_max = self.get_cap_max()  # dicitionary of maximum production
+        # self.cap_min = self.get_cap_min()  # dictionary of minimum production
         # gets the modes for all processes
-        self.modes_dict = {p: p.modes for p in self.processes_full if p.modes}
+        # self.modes_dict = {p: p.modes for p in self.processes_full if p.modes}
         # gets the ramp_rates for all processes
-        self.ramp_rates_dict = {p: p.ramp_rates for p in self.processes_full}
+        # self.ramp_rates_dict = {p: p.ramp_rates for p in self.processes_full}
         # gets the cap_pwl for all processes
-        self.cap_pwl_dict = {p: p.cap_pwl for p in self.processes_full}
+        # self.cap_pwl_dict = {p: p.cap_pwl for p in self.processes_full}
         # gets the ramp sequences for all processes
-        self.ramp_sequence_dict = {
-            p: p.ramp_sequence for p in self.processes_full}
+        # self.ramp_sequence_dict = {
+        #     p: p.ramp_sequence for p in self.processes_full}
         # self.modes_all_dict = {p: {'modes': self.modes_dict[p], 'ramp_rates': self.ramp_rates_dict[p],
         #                            'cap_pwl': self.cap_pwl_dict[p], 'ramp_sequence': self.ramp_sequence_dict[p]} if p.processmode == ProcessMode.MULTI else {'modes': None, 'ramp_rates': None,
         #                                                                                                                                                      'cap_pwl': None, 'ramp_sequence': None} for p in self.processes_full}

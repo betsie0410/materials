@@ -1,0 +1,16 @@
+numpy
+pandas
+pyomo
+h5pyd
+scipy
+matplotlib
+scikit-learn
+openpyxl
+ppopt
+gurobipy
+distfit
+pvlib
+windpowerlib
+
+[test]
+pytest
