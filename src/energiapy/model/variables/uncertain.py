@@ -32,3 +32,4 @@ def generate_uncertainty_vars(instance: ConcreteModel, scale_level: int = 0):
                                               instance.scales_uncertainty, within=NonNegativeReals, doc='resource price uncertainty')
     instance.process_capacity_uncertainty = Var(instance.locations, instance.processes_uncertain_capacity,
                                                 instance.scales_uncertainty, within=NonNegativeReals, doc='process capacity uncertainty')
+    return
